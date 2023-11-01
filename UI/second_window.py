@@ -25,9 +25,9 @@ class InputWindow2:
         for i in range(len(self.tasks)):
             self.task_info.append((
                 self.tasks[i].get(),
-                self.at[i].get(),
-                self.bt[i].get(),
-                self.pt[i].get(),
+                int(self.at[i].get()),
+                int(self.bt[i].get()),
+                int(self.pt[i].get()),
                 -1,  #Execution time initialized to -1
                 -1   #Completion time initialized to -1
             ))

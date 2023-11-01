@@ -8,6 +8,6 @@ print(ans)
 
 input_window2 = InputWindow2(ans)
 Tasks,tq = input_window2.get_input_values()
-print(Tasks,tq)
+print(Tasks,  tq)
 
-insert_values(Tasks)
+insert_values(Tasks,tq)
