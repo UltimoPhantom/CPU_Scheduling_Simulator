@@ -6,7 +6,6 @@ ans = input_window.get_input_values()
 print(ans)
 
 input_window2 = InputWindow2(ans)
-Tasks = input_window2.get_input_values()
-print(Tasks)
+Tasks,tq = input_window2.get_input_values()
+print(Tasks,tq)
 
-# create_second_window(ans)
