@@ -2,6 +2,10 @@ import customtkinter as ctk
 import tkinter as tk
 
 class InputWindow2:
+    '''
+        After taking the number of tasks and type of algo from the first window, this one will take n task name,
+        arrival time, burst time, priority(in Priority_S), time quantum(in RoundRobin_S) 
+    '''
     def __init__(self,ans):
         self.n = ans['n']
         self.algo = ans['algo']
@@ -238,4 +242,8 @@ class InputWindow2:
     
 
     def get_input_values(self):
+        '''
+            This function returns an array of tasks(with its info) and Time Quantum (only in RR), all these
+            necessary things are called by the constructor itself
+        '''
         return self.task_info,self.tQ
