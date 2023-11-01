@@ -1,5 +1,7 @@
 '''
-    This part of code is used to create database and tables
+    This part of code is used to create database and tables. 
+    Replace the connector creds with yours, 
+    then run the commented commands one by one to create database, table and more
 '''
 
 import mysql.connector
@@ -59,4 +61,13 @@ myCursor = mydb.cursor()
 #     )
 # """)
 
+sql = "INSERT INTO algorithm (id, name) VALUES (%s, %s)"
+val = (1, "Priority_S")
+myCursor.execute(sql, val)
+
+sql = "INSERT INTO algorithm (id, name) VALUES (%s, %s)"
+val = (2, "RRobin_S")
+myCursor.execute(sql, val)
+
+mydb.commit()
 
