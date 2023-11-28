@@ -34,7 +34,7 @@ class Priority:
     def schedulingProcess(self, process_data):
         start_time = []
         exit_time = []
-        idle_time = []
+        # idle_time = []
         s_time = 0
         sequence_of_process = []
         process_data.sort(key=lambda x: x[1])
@@ -56,8 +56,10 @@ class Priority:
                                  process_data[i][5]])
                     normal_queue.append(temp)
                     temp = []
+                    
             if len(ready_queue) == 0 and len(normal_queue) == 0:
                 break
+            
             if len(ready_queue) != 0:
                 ready_queue.sort(key=lambda x: x[3], reverse=False)
                 start_time.append(s_time)
@@ -72,16 +74,17 @@ class Priority:
                 if process_data[k][2] == 0:       #if burst time is zero, it means process is completed
                     process_data[k][4] = 1
                     process_data[k].append(e_time)
+                    
             if len(ready_queue) == 0:
                 normal_queue.sort(key=lambda x: x[1])
-                idle = [s_time,]
-                print("Waiting: ", s_time)
+                # idle = [s_time,]
                 if s_time < normal_queue[0][1]:
-                    s_time = normal_queue[0][1]
-                    idle.append(s_time)
-                    idle_time.append(idle) if len(idle) > 0 else None
-                print("Done: ", s_time)
-                print()
+                    # s_time = normal_queue[0][1]
+                    sequence_of_process.append(-1)
+                    s_time += 1
+                    continue
+                    # idle.append(s_time)
+                    # idle_time.append(idle) if len(idle) > 0 else None
                 start_time.append(s_time)
                 s_time = s_time + 1
                 e_time = s_time
@@ -94,11 +97,11 @@ class Priority:
                 if process_data[k][2] == 0:        #if burst time is zero, it means process is completed
                     process_data[k][4] = 1
                     process_data[k].append(e_time)
-                print("**", idle_time)
+                # print("**", idle_time)
                     
         t_time = Priority.calculateTurnaroundTime(self, process_data)
         w_time = Priority.calculateWaitingTime(self, process_data)
-        Priority.printData(self, process_data, t_time, w_time, sequence_of_process, idle_time)
+        Priority.printData(self, process_data, t_time, w_time, sequence_of_process)
 
     def calculateTurnaroundTime(self, process_data):
         total_turnaround_time = 0
@@ -130,7 +133,7 @@ class Priority:
         '''
         return average_waiting_time
 
-    def printData(self, process_data, average_turnaround_time, average_waiting_time, sequence_of_process, idle_time):
+    def printData(self, process_data, average_turnaround_time, average_waiting_time, sequence_of_process):
         process_data.sort(key=lambda x: x[0])
         '''
         Sort processes according to the Process ID
@@ -148,9 +151,9 @@ class Priority:
 
         print(f'Sequence of Process: {sequence_of_process}')
         
-        print("Idle Times are: ")
+        # print("Idle Times are: ")
         
-        print(idle_time) if len(idle_time) > 0 else None
+        # print(idle_time) if len(idle_time) > 0 else None
 
 
 if __name__ == "__main__":
