@@ -23,7 +23,10 @@ class Priority:
         temporary = ([2, 1, 6, 1, 0, 6])
         process_data.append(temporary)
 
-        temporary = ([3, 17, 4, 3, 0, 4])
+        temporary = ([3, 20, 4, 3, 0, 4])
+        process_data.append(temporary)
+
+        temporary = ([4, 29, 4, 3, 0, 4])
         process_data.append(temporary)
 
         Priority.schedulingProcess(self, process_data)
@@ -71,12 +74,14 @@ class Priority:
                     process_data[k].append(e_time)
             if len(ready_queue) == 0:
                 normal_queue.sort(key=lambda x: x[1])
-                idle = [s_time]
+                idle = [s_time,]
+                print("Waiting: ", s_time)
                 if s_time < normal_queue[0][1]:
                     s_time = normal_queue[0][1]
-                idle.append(s_time)
-                idle_time.append(idle) if len(idle) > 0 else None
-                idle.clear()
+                    idle.append(s_time)
+                    idle_time.append(idle) if len(idle) > 0 else None
+                print("Done: ", s_time)
+                print()
                 start_time.append(s_time)
                 s_time = s_time + 1
                 e_time = s_time
@@ -89,6 +94,8 @@ class Priority:
                 if process_data[k][2] == 0:        #if burst time is zero, it means process is completed
                     process_data[k][4] = 1
                     process_data[k].append(e_time)
+                print("**", idle_time)
+                    
         t_time = Priority.calculateTurnaroundTime(self, process_data)
         w_time = Priority.calculateWaitingTime(self, process_data)
         Priority.printData(self, process_data, t_time, w_time, sequence_of_process, idle_time)
@@ -149,4 +156,4 @@ class Priority:
 if __name__ == "__main__":
     # no_of_processes = int(input("Enter number of processes: "))
     priority = Priority()
-    priority.processData(3)
+    priority.processData(4)
