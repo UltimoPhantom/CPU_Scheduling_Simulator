@@ -33,6 +33,9 @@ def insert_values(Tasks, tq):
     
     mydb.commit()  # Commit the transaction
     print(myCursor.rowcount, "record(s) inserted.")
+    
+    myCursor.execute("select * from process")
+    myCursor.execute("select * from simulation")
 
     myCursor.close()
     mydb.close()
