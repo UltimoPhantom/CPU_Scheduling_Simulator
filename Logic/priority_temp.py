@@ -1,34 +1,15 @@
 class Priority:
 
-    def processData(self, no_of_processes):
+    def processData(self, tasks):
         process_data = []
-        # for i in range(no_of_processes):
-        #     temporary = []
-        #     process_id = int(input("Enter Process ID: "))
+        # temporary = []
+        # temporary = ([1, 0, 5, 2, 0, 5])
+        # process_data.append(temporary)
+        #tasks [ name, arrival, burst, priority, status, burst]
 
-        #     arrival_time = int(input(f"Enter Arrival Time for Process {process_id}: "))
-
-        #     burst_time = int(input(f"Enter Burst Time for Process {process_id}: "))
-
-        #     priority = int(input(f"Enter Priority for Process {process_id}: "))
-
-        #     temporary.extend([process_id, arrival_time, burst_time, priority, 0, burst_time])
-        #     '''
-        #     '0' is the state of the process. 0 means not executed and 1 means execution complete
-        #     '''
-        temporary = []
-        temporary = ([1, 0, 5, 2, 0, 5])
-        process_data.append(temporary)
-            
-        temporary = ([2, 1, 6, 1, 0, 6])
-        process_data.append(temporary)
-
-        temporary = ([3, 20, 4, 3, 0, 4])
-        process_data.append(temporary)
-
-        temporary = ([4, 29, 4, 3, 0, 4])
-        process_data.append(temporary)
-
+        for task in tasks:
+             temp = [task[0], task[1], task[2], task[3], 0, task[2]]
+             process_data.append(temp)
         Priority.schedulingProcess(self, process_data)
 
     def schedulingProcess(self, process_data):
@@ -47,13 +28,11 @@ class Priority:
             temp = []
             for i in range(len(process_data)):
                 if process_data[i][1] <= s_time and process_data[i][4] == 0:
-                    temp.extend([process_data[i][0], process_data[i][1], process_data[i][2], process_data[i][3],
-                                 process_data[i][5]])
+                    temp.extend([process_data[i][0], process_data[i][1], process_data[i][2], process_data[i][3], process_data[i][5]])
                     ready_queue.append(temp)
                     temp = []
                 elif process_data[i][4] == 0:
-                    temp.extend([process_data[i][0], process_data[i][1], process_data[i][2], process_data[i][4],
-                                 process_data[i][5]])
+                    temp.extend([process_data[i][0], process_data[i][1], process_data[i][2], process_data[i][4], process_data[i][5]])
                     normal_queue.append(temp)
                     temp = []
                     
@@ -151,12 +130,8 @@ class Priority:
 
         print(f'Sequence of Process: {sequence_of_process}')
         
-        # print("Idle Times are: ")
         
-        # print(idle_time) if len(idle_time) > 0 else None
-
-
-if __name__ == "__main__":
-    # no_of_processes = int(input("Enter number of processes: "))
-    priority = Priority()
-    priority.processData(4)
+# if __name__ == "__main__":
+#     # no_of_processes = int(input("Enter number of processes: "))
+#     priority = Priority()
+#     priority.processData(4)
