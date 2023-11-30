@@ -10,7 +10,8 @@ class Priority:
         for task in tasks:
              temp = [task[0], task[1], task[2], task[3], 0, task[2]]
              process_data.append(temp)
-        Priority.schedulingProcess(self, process_data)
+        result = Priority.schedulingProcess(self, process_data)
+        return result
 
     def schedulingProcess(self, process_data):
         start_time = []
@@ -80,7 +81,9 @@ class Priority:
                     
         t_time = Priority.calculateTurnaroundTime(self, process_data)
         w_time = Priority.calculateWaitingTime(self, process_data)
-        Priority.printData(self, process_data, t_time, w_time, sequence_of_process)
+        # Priority.printData(self, process_data, t_time, w_time, sequence_of_process)
+        return sequence_of_process, t_time, w_time
+        
 
     def calculateTurnaroundTime(self, process_data):
         total_turnaround_time = 0

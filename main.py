@@ -15,5 +15,5 @@ print(Tasks)
 
 if tq == -1:
     priority_instance = Priority()
-    priority_instance.processData(Tasks)
-
+    res = priority_instance.processData(Tasks)
+    

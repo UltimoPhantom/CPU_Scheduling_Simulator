@@ -198,7 +198,3 @@ class TaskSchedulerApp(ctk.CTk):
             p1.set(0.2)
             i += 1
             y += 75
-
-if __name__ == "__main__":
-    app = TaskSchedulerApp()
-    app.mainloop()
