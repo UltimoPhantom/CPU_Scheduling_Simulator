@@ -97,11 +97,12 @@ import customtkinter as ctk
 import tkinter as tk
 from PIL import Image, ImageTk
  
-class TaskSchedulerApp(ctk.CTk):
-    def __init__(self):
+class Priority_Output(ctk.CTk):
+    def __init__(self,Tasks, Sqe_Result):
         super().__init__()
-
+        # print(len(Tasks))
         self.geometry("1000x550")
+        progress_bar_list = []
 
         # Main Frame
         self.main_frame = ctk.CTkFrame(self, width=1000, height=550)
@@ -174,27 +175,29 @@ class TaskSchedulerApp(ctk.CTk):
         i = 0
         x = 550
         y = 100
-
-        for k in range(0, 3):
+        
+        for k in range(len(Tasks)):
             TurnAround = ctk.CTkLabel(
                 self.main_frame, 
-                text="T"+str(i),
+                text=Tasks[k][0],
                 font=("Verdana", 25),
-                corner_radius=20,
                 text_color='#37c9ef',
                 bg_color='#171f28',
             )
             TurnAround.place(x=x, y=y)
 
-            p1 = ctk.CTkProgressBar (
+            progress_bar = ctk.CTkProgressBar (
                 self.main_frame,
                 orientation='horizontal',
                 width=280,
                 height=30,
-                corner_radius=7,
                 progress_color='#2588a2',
             )   
-            p1.place(x=x+100, y=y)
-            p1.set(0.2)
+            progress_bar.place(x=x+100, y=y)
+            progress_bar.set(0.0)
+            progress_bar_list.append(progress_bar)
             i += 1
             y += 75
+
+# app = Priority_Output()
+# app.mainloop()

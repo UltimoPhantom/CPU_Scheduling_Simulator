@@ -1,28 +1,27 @@
-import tkinter as tk
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-import matplotlib.pyplot as plt
+import customtkinter as ctk
+import time
 
-def draw_gantt_chart():
-    root = tk.Tk()
-    root.title("Gantt Chart Example")
+root = ctk.CTk()
+root.geometry("400x300")
 
-    fig, ax = plt.subplots()
-    tasks = [
-        ("Task 1", 10, 30),
-        ("Task 2", 50, 20),
-        ("Task 3", 100, 40)
-    ]
-    for i, (label, start, duration) in enumerate(tasks):
-        ax.broken_barh([(start, duration)], (10 + 30 * i, 20), facecolors='#4C516D')
+p1 = ctk.CTkProgressBar(
+    root,
+    width=280,
+    height=30,
+    progress_color='#2588a2',   
+)
+p1.pack()
 
-    ax.set_xlabel('Time')
-    ax.set_yticks([20 + 30 * i for i in range(len(tasks))])
-    ax.set_yticklabels([f"Task {i+1}" for i in range(len(tasks))])
+# time.sleep(1)
 
-    canvas = FigureCanvasTkAgg(fig, master=root)
-    canvas.draw()
-    canvas.get_tk_widget().pack()
+p1.set(.5)
 
-    root.mainloop()
+# time.sleep(1)
 
-draw_gantt_chart()
+# p1.step(0.7)
+
+root.mainloop()
+
+time.sleep(1)
+
+p1.set(1)
