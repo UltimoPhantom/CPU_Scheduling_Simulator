@@ -7,7 +7,7 @@ class Priority_Output(ctk.CTk):
         self.geometry("1000x550")
         self.progress_bar_list = []
         self.Tasks = list(Tasks)
-        self.Sqe_Result = Sqe_Result
+        self.Sqe_Result = Sqe_Result[0]
         for i in range(len(self.Tasks)):
             self.Tasks[i][4] = 0
 
@@ -121,7 +121,7 @@ class Priority_Output(ctk.CTk):
                 self.Tasks[j][4] += 1
                 completion_percentage = (self.Tasks[j][4] / self.Tasks[j][2]) 
                 print(completion_percentage," ************")
-                self.progress_bar_list[j].set(completion_percentage)
+                self.progress_bar_list[j].set(round(completion_percentage,1))
 
             # Schedule the next update after 1000 milliseconds (1 second)
             self.after(1000, self.update_progress_bars, index + 1)
