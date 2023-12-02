@@ -27,11 +27,11 @@
 
 from UI.first_window import InputWindow
 from UI.second_window import InputWindow2
+from UI.Priority_Output import Priority_Output
+from UI.fcfs_window import FCFS_Output
 from Data.insertion import insert_values
 from Logic.priority_prem import Priority
-from UI.Priority_Output import Priority_Output
 from Logic.fcfs import Fcfs
-from UI.fcfs_window import FCFS_Output
 
 input_window = InputWindow()
 ans = input_window.get_input_values()
@@ -53,11 +53,10 @@ if ans['algo'] == "Priority":
     # priority_instance_output.start_updates()  # Start updates in Priority_Output
     priority_instance_output.mainloop()
 
-if ans['algo'] == 'FCFS':
+elif ans['algo'] == 'FCFS':
     Fcfs_instance = Fcfs()
     res = Fcfs_instance.processData(Tasks)
     print("RES RES  ",res)
     print(Tasks, res)
-    
     fcfs_instance_output = FCFS_Output(Tasks, res)
     fcfs_instance_output.mainloop()
