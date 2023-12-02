@@ -40,8 +40,6 @@ Tasks, tq = input_window2.get_input_values()
 # insert_values(Tasks, tq)
 print(Tasks)
 
-# ... (previous code)
-
 if tq == -1:
     priority_instance = Priority()
     res = priority_instance.processData(Tasks)
@@ -51,5 +49,6 @@ if tq == -1:
     for it in Tasks:
         newTask.append(list(it))
     priority_instance_output = Priority_Output(newTask, res)
-    priority_instance_output.start_updates()
+    # priority_instance_output.start_updates()  # Start updates in Priority_Output
     priority_instance_output.mainloop()
+

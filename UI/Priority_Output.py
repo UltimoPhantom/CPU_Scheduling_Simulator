@@ -10,7 +10,7 @@ class Priority_Output(ctk.CTk):
         self.Sqe_Result = Sqe_Result[0]
         for i in range(len(self.Tasks)):
             self.Tasks[i][4] = 0
-
+        self.counter = 0
         # Main Frame
         self.main_frame = ctk.CTkFrame(self, width=1000, height=550)
         self.main_frame.pack_propagate(False)
@@ -33,7 +33,7 @@ class Priority_Output(ctk.CTk):
             font=("Verdana", 30),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='#171f28'
+            bg_color='transparent'
         )
         Title_Label.place(x=170, y=10)
 
@@ -45,7 +45,7 @@ class Priority_Output(ctk.CTk):
             font=("Verdana", 25),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='#171f28',
+            bg_color='transparent',
         )
         self.Time_Time.place(x=30, y=100)
 
@@ -55,7 +55,7 @@ class Priority_Output(ctk.CTk):
             font=("Verdana", 35),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='#171f28',
+            bg_color='transparent',
         )
         self.Time_Value.place(x=170, y=95)
 
@@ -66,7 +66,7 @@ class Priority_Output(ctk.CTk):
             font=("Verdana", 25),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='#171f28',
+            bg_color='transparent',
         )
         Waiting_Label.place(x=30, y=300)
 
@@ -76,9 +76,10 @@ class Priority_Output(ctk.CTk):
             font=("Verdana", 25),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='#171f28',
+            bg_color='transparent',
         )
         TurnAround.place(x=30, y=400)
+
 
         # Task Labels and Progress Bars
         i = 0
@@ -91,7 +92,7 @@ class Priority_Output(ctk.CTk):
                 text=Tasks[k][0],
                 font=("Verdana", 25),
                 text_color='#37c9ef',
-                bg_color='#171f28',
+                bg_color='transparent',
             )
             TurnAround.place(x=x, y=y)
 
@@ -113,6 +114,8 @@ class Priority_Output(ctk.CTk):
 
     def update_progress_bars(self, index):
         if index < len(self.Sqe_Result):
+            self.counter += 1
+            print(self.counter)
             task = self.Sqe_Result[index]
             if task != -1:
                 for j in range(len(self.Tasks)):
@@ -120,12 +123,12 @@ class Priority_Output(ctk.CTk):
                         break
                 self.Tasks[j][4] += 1
                 completion_percentage = (self.Tasks[j][4] / self.Tasks[j][2]) 
-                print(completion_percentage," ************")
-                self.progress_bar_list[j].set(round(completion_percentage,1))
+                print(round(completion_percentage,1)," **** ",  self.Tasks[j][0])
+                self.progress_bar_list[j].set(round(completion_percentage,3))
 
             # Schedule the next update after 1000 milliseconds (1 second)
             self.after(1000, self.update_progress_bars, index + 1)
+        else:
+            return 
 
-    def start_updates(self):
-        # Start the updates from the beginning
-        self.update_progress_bars(0)
+ 
