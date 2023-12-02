@@ -1,13 +1,17 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
 
-class Priority_Output(ctk.CTk):
+class FCFS_Output(ctk.CTk):
     def __init__(self, Tasks, Sqe_Result):
         super().__init__()
         self.geometry("1000x550")
         self.progress_bar_list = []
         self.Tasks = list(Tasks)
         print("&&&& ", Sqe_Result)
+        ans = []
+        for task in self.Tasks:
+            ans.append(list(task))
+        self.Tasks = ans
         
         self.avg_waiting = Sqe_Result[1]
         self.avg_turnAround = Sqe_Result[2]
@@ -35,13 +39,13 @@ class Priority_Output(ctk.CTk):
         # Title Label
         Title_Label = ctk.CTkLabel(
             self.main_frame,
-            text="Priority Scheduling (preemptive)",
+            text="First Come First Served Algorithm",
             font=("Verdana", 30),
             corner_radius=20,
             text_color='#37c9ef',
             bg_color='transparent'
         )
-        Title_Label.place(x=170, y=10)
+        Title_Label.place(x=270, y=10)
 
         # Time Labels
         self.time = 0
