@@ -51,7 +51,7 @@ class InputWindow:
 
         self.algo_input = ctk.CTkComboBox(
             self.main_frame,
-            values=['Priority', 'Round Robin'],
+            values=['Priority', 'Round Robin', 'FCFS'],
             bg_color='#1d1c22',
             font=("Verdana", 12),
             dropdown_fg_color='#1d1c22',
