@@ -10,12 +10,11 @@ p1 = ctk.CTkProgressBar (
     height=22,
     corner_radius=7,
     progress_color='#2588a2',
-
 )
-p1.pack()
-p1.set(0.2)
 
-p1.set(0.8)
+p1.pack()
+p1.set(0)
+
 
 
 root.mainloop()

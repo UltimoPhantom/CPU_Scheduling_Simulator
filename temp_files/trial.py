@@ -1,15 +1,12 @@
-import mysql.connector
+from tkinter import ttk, Tk
 
-mydb = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='sajetsajet',
-    database='trial1'
-)
+root = Tk()
 
-myCursor = mydb.cursor()
+# Explicitly set the maximum value
+progress = ttk.Progressbar(root, length=200, mode="determinate", maximum=100)
+progress.pack()
 
-task_names = ""
-Tasks = {('T1',2,3,1),('T2',2,3,4),('T3',4,5,2)}
+# Set the value to 0
+progress["value"] = 30
 
-print(len(Tasks))
+root.mainloop()
