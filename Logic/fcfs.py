@@ -1,7 +1,10 @@
 class Fcfs:
     def processData(self, Tasks):
         # Tasks: list of tuples representing tasks
-
+        ans = []
+        for task in Tasks:
+            ans.append(list(task))
+        Tasks = ans
         # Sort tasks according to their arrival time
         Tasks = sorted(Tasks, key=lambda x: x[1])
 
@@ -9,6 +12,8 @@ class Fcfs:
         sequence = []
         waiting_time = []
         turnAround_time = []
+        avg_waiting_time = 0
+        avg_turnAround_time = 0
         time = 0
         task_count = len(Tasks)
         indx = 0
@@ -38,16 +43,8 @@ class Fcfs:
         print("*** Turn Around Time ***")
         print(turnAround_time)
         print("****")
-        return sequence, time
-
-
-
-
-ff = Fcfs()
-task = list([('Task1', 2, 12, 2, -1, -1), ('Task2', 6, 2, 1, -1, -1), ('Task3', 10, 1, 3, -1, -1)])
-ans = []
-for i in task:
-    ans.append(list(i))
-
-print(ff.processData(ans)) 
+        
+        avg_waiting_time = round(sum(waiting_time) / len(Tasks),2)
+        avg_turnAround_time = round(sum(turnAround_time) / len(Tasks),2)
+        return sequence, avg_waiting_time, avg_turnAround_time
 
