@@ -1,34 +1,50 @@
 class Fcfs:
-    def processData(Tasks):
-        #Tasks [ name, arrival, burst, priority, status, burst]
-        processes = []
-        waiting_time = [0] * n
-        total_waiting_time = 0
-        total_turnaround_time = 0
-        burst_time = [0] * n
-        turnaround_time = [0] * n
-        
-        n = len(processes)
-        for i in len(Tasks):
-            processes[i] = Tasks[i][0]
-            
-            
-        # Calculate turnaround time and waiting time
-        for i in range(n):
-            if i == 0:
-                turnaround_time[i] = burst_time[i]
+    def processData(self, Tasks):
+        # Tasks: list of tuples representing tasks
+        # Each tuple: (process name, arrival time, burst time)
+
+        # Sort tasks according to their arrival time
+        Tasks = sorted(Tasks, key=lambda x: x[1])
+
+        # Initialize variables
+        process_names = []
+        arrival_times = []
+        burst_times = []
+        sequence = []
+        time = 0
+        task_count = len(Tasks)
+        indx = 0
+
+        while indx < len(Tasks):
+            # Check if current task is ready
+            if Tasks[indx][2] > 0 and time >= Tasks[indx][1]:
+                # Execute the current task
+                sequence.append(Tasks[indx][0])
+                Tasks[indx][2] -= 1
+                time += 1
+                print(Tasks[indx][0])
+            elif time < Tasks[indx][1]:
+                time += 1
+                sequence.append(-1)
             else:
-                turnaround_time[i] = turnaround_time[i - 1] + burst_time[i]
-            
-            waiting_time[i] = turnaround_time[i] - burst_time[i]
-            total_waiting_time += waiting_time[i]
-            total_turnaround_time += turnaround_time[i]
+                indx += 1
+                
+            # Idle time if no task is ready
+            # if Tasks[indx][2] == 0:
+            #     sequence.append(-1)
+            #     time += 1
+            #     task_count -= 1
 
-        # Calculate average waiting time and average turnaround time
-        average_waiting_time = total_waiting_time / n
-        average_turnaround_time = total_turnaround_time / n
+        return sequence, time
 
-        print("Average Waiting Time:", average_waiting_time)
-        print("Average Turnaround Time:", average_turnaround_time)
 
+
+
+ff = Fcfs()
+task = list([('Task1', 2, 1, 2, -1, -1), ('Task2', 4, 1, 1, -1, -1), ('Task3', 7, 2, 3, -1, -1)])
+ans = []
+for i in task:
+    ans.append(list(i))
+
+print(ff.processData(ans)) 
 
