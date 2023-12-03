@@ -27,7 +27,7 @@
 
 from UI.first_window import InputWindow
 from UI.second_window import InputWindow2
-from UI.Priority_Output import Priority_Output
+from UI.Priority_window import Priority_Output
 from UI.fcfs_window import FCFS_Output
 from UI.round_robin_window import RR_Output
 from Data.insertion import insert_values
@@ -54,6 +54,7 @@ if ans['algo'] == "Priority":
     priority_instance_output = Priority_Output(newTask, res)
     # priority_instance_output.start_updates()  # Start updates in Priority_Output
     priority_instance_output.mainloop()
+    # priority_instance_output.
 
 elif ans['algo'] == 'FCFS':
     Fcfs_instance = Fcfs()

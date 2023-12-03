@@ -45,7 +45,7 @@ class Priority_Output(ctk.CTk):
         Title_Label.place(x=170, y=10)
 
         # Time Labels
-        self.time = 0
+        self.time = 1   
         self.Time_Time = ctk.CTkLabel(
             self.main_frame,
             text="Time: ",
