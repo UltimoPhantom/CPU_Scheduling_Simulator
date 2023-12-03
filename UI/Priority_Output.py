@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
+import time
 
 class Priority_Output(ctk.CTk):
     def __init__(self, Tasks, Sqe_Result):
@@ -9,8 +10,8 @@ class Priority_Output(ctk.CTk):
         self.Tasks = list(Tasks)
         print("&&&& ", Sqe_Result)
         
-        self.avg_waiting = Sqe_Result[1]
-        self.avg_turnAround = Sqe_Result[2]
+        self.avg_waiting = round(Sqe_Result[1],2)
+        self.avg_turnAround = round(Sqe_Result[2],2)
         self.Sqe_Result = Sqe_Result[0]
         
         for i in range(len(self.Tasks)):
@@ -156,6 +157,4 @@ class Priority_Output(ctk.CTk):
             # Schedule the next update after 1000 milliseconds (1 second)
             self.after(1000, self.update_progress_bars, index + 1)
         else:
-            return 
-
- 
+            return  

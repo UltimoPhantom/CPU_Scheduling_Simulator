@@ -60,3 +60,6 @@ elif ans['algo'] == 'FCFS':
     print(Tasks, res)
     fcfs_instance_output = FCFS_Output(Tasks, res)
     fcfs_instance_output.mainloop()
+
+elif ans['algo'] == 'Round Robin':
+    print("HE HE")
