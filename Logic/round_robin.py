@@ -7,21 +7,15 @@ class RoundRobin:
              temp = [task[0], task[1], task[2], 0, task[2]]
 #temporary.extend([process_id, arrival_time, burst_time, 0, burst_time])
 
-             print("Name: ", task[0])
-             print("Arrival: ", task[1])
-             print("Burst: ", task[2])
              
              process_data.append(temp)
-        RoundRobin.schedulingProcess(self, process_data, tq)
+        result = RoundRobin.schedulingProcess(self, process_data, tq)
+        return result
 
     def schedulingProcess(self, process_data, time_slice):
-        print("HELLO")
         burst_times = {}
         for task in process_data:
             burst_times[task[0]] = task[2]
-        print("^%^%^^ burst times ")
-        print(burst_times)
-        print("$$$$$")
         start_time = []
         exit_time = []
         executed_process = []
@@ -128,11 +122,6 @@ class RoundRobin:
                     process_data[j].append(e_time)
         t_time = RoundRobin.calculateTurnaroundTime(self, process_data)
         w_time = RoundRobin.calculateWaitingTime(self, process_data)
-        print("Waiting: ",w_time)
-        print("TurnAround: ",t_time)
-        print("*** ORDER *** : ")
-        print(executed_process)
-        print("****")
         
         sequence_order = []
         for task in executed_process:
@@ -141,12 +130,9 @@ class RoundRobin:
                 burst_times[task] -= time_slice
             else:
                 for i in range(time_slice - burst_times[task]) : sequence_order.append(task)
-        print("*** *** ** **")
-        print(sequence_order)
-        print("*** *** ** **")
                 
-        print(self, process_data, t_time, w_time, executed_process)
-
+        return (sequence_order, w_time, t_time)
+    
     def calculateTurnaroundTime(self, process_data):
         total_turnaround_time = 0
         for i in range(len(process_data)):
@@ -185,4 +171,5 @@ class RoundRobin:
     
 task = [('T1', 0, 5, -1, -1, -1), ('T2', 1, 4, -1, -1, -1),('T3', 2, 2, -1, -1, -1),('T4', 3, 1, -1, -1, -1) ]
 rr = RoundRobin()
-rr.processData(task,2)
+ans = rr.processData(task,2)
+print(ans)

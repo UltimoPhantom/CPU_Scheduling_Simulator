@@ -32,6 +32,7 @@ from UI.fcfs_window import FCFS_Output
 from Data.insertion import insert_values
 from Logic.priority_prem import Priority
 from Logic.fcfs import Fcfs
+from Logic.round_robin import RoundRobin
 
 input_window = InputWindow()
 ans = input_window.get_input_values()
@@ -62,4 +63,6 @@ elif ans['algo'] == 'FCFS':
     fcfs_instance_output.mainloop()
 
 elif ans['algo'] == 'Round Robin':
-    print("HE HE")
+    rr_instance = RoundRobin()
+    res = rr_instance.processData(Tasks, int(tq))
+    print(res)
