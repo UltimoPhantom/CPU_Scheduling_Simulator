@@ -29,6 +29,7 @@ from UI.first_window import InputWindow
 from UI.second_window import InputWindow2
 from UI.Priority_Output import Priority_Output
 from UI.fcfs_window import FCFS_Output
+from UI.round_robin_window import RR_Output
 from Data.insertion import insert_values
 from Logic.priority_prem import Priority
 from Logic.fcfs import Fcfs
@@ -66,3 +67,6 @@ elif ans['algo'] == 'Round Robin':
     rr_instance = RoundRobin()
     res = rr_instance.processData(Tasks, int(tq))
     print(res)
+    rr_instance_output = RR_Output(Tasks, res, tq)
+    rr_instance_output.mainloop()
+    
