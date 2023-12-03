@@ -2,13 +2,17 @@ import customtkinter as ctk
 from PIL import Image, ImageTk
 import time
 
-class Priority_Output(ctk.CTk):
-    def __init__(self, Tasks, Sqe_Result):
+class RR_Output(ctk.CTk):
+    def __init__(self, Tasks, Sqe_Result, tq):
         super().__init__()
         self.geometry("1000x550")
         self.progress_bar_list = []
         self.Tasks = list(Tasks)
         print("&&&& ", Sqe_Result)
+        ans = []
+        for task in self.Tasks:
+            ans.append(list(task))
+        self.Tasks = ans
         
         self.avg_waiting = round(Sqe_Result[1],2)
         self.avg_turnAround = round(Sqe_Result[2],2)
@@ -36,7 +40,7 @@ class Priority_Output(ctk.CTk):
         # Title Label
         Title_Label = ctk.CTkLabel(
             self.main_frame,
-            text="Priority Scheduling (preemptive)",
+            text="Round Robin Scheduling (TQ = "+tq+")",
             font=("Verdana", 30),
             corner_radius=20,
             text_color='#37c9ef',
