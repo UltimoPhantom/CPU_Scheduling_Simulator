@@ -43,7 +43,7 @@ class FCFS_Output(ctk.CTk):
             font=("Verdana", 30),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='transparent'
+            bg_color='#1d1d1d'
         )
         Title_Label.place(x=270, y=10)
 
@@ -55,7 +55,7 @@ class FCFS_Output(ctk.CTk):
             font=("Verdana", 25),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='transparent',
+            bg_color='#232323',
         )
         self.Time_Time.place(x=30, y=100)
 
@@ -65,7 +65,7 @@ class FCFS_Output(ctk.CTk):
             font=("Verdana", 35),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='transparent',
+            bg_color='#222222',
         )
         self.Time_Value.place(x=170, y=95)
 
@@ -76,7 +76,7 @@ class FCFS_Output(ctk.CTk):
             font=("Verdana", 25),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='transparent',
+            bg_color='#303030',
         )
         Waiting_Label.place(x=30, y=300)
         
@@ -86,7 +86,7 @@ class FCFS_Output(ctk.CTk):
             font=("Verdana", 25),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='transparent',
+            bg_color='#303030',
         )
         Waiting_Label_Value.place(x=285, y=300)
 
@@ -96,7 +96,7 @@ class FCFS_Output(ctk.CTk):
             font=("Verdana", 25),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='transparent',
+            bg_color='#202020',
         )
         TurnAround.place(x=30, y=400)
 
@@ -106,7 +106,7 @@ class FCFS_Output(ctk.CTk):
             font=("Verdana", 25),
             corner_radius=20,
             text_color='#37c9ef',
-            bg_color='transparent',
+            bg_color='#202020',
         )
         TurnAround_value.place(x=350, y=400)
 
@@ -140,6 +140,7 @@ class FCFS_Output(ctk.CTk):
 
         # Start the updates after initialization
         self.update_progress_bars(0)
+        
 
     def update_progress_bars(self, index):
         if index < len(self.Sqe_Result):
@@ -160,6 +161,6 @@ class FCFS_Output(ctk.CTk):
             # Schedule the next update after 1000 milliseconds (1 second)
             self.after(1000, self.update_progress_bars, index + 1)
         else:
-            return 
+            return
 
  

@@ -2,10 +2,6 @@ class Priority:
 
     def processData(self, tasks):
         process_data = []
-        # temporary = []
-        # temporary = ([1, 0, 5, 2, 0, 5])
-        # process_data.append(temporary)
-        #tasks [ name, arrival, burst, priority, status, burst]
 
         for task in tasks:
              temp = [task[0], task[1], task[2], task[3], 0, task[2]]
@@ -16,7 +12,6 @@ class Priority:
     def schedulingProcess(self, process_data):
         start_time = []
         exit_time = []
-        # idle_time = []
         s_time = 0
         sequence_of_process = []
         process_data.sort(key=lambda x: x[1])
@@ -132,9 +127,3 @@ class Priority:
         print(f'Average Waiting Time: {average_waiting_time}')
 
         print(f'Sequence of Process: {sequence_of_process}')
-        
-        
-# if __name__ == "__main__":
-#     # no_of_processes = int(input("Enter number of processes: "))
-#     priority = Priority()
-#     priority.processData(4)

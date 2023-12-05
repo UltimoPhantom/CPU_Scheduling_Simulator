@@ -5,7 +5,6 @@ class RoundRobin:
         
         for task in tasks:
              temp = [task[0], task[1], task[2], 0, task[2]]
-#temporary.extend([process_id, arrival_time, burst_time, 0, burst_time])
 
              
              process_data.append(temp)
@@ -164,11 +163,6 @@ class RoundRobin:
         return average_waiting_time
 
 
-# if __name__ == "__main__":
-#     no_of_processes = int(input("Enter number of processes: "))
-#     rr = RoundRobin()
-#     rr.processData(no_of_processes)
-    
 task = [('T1', 0, 5, -1, -1, -1), ('T2', 1, 4, -1, -1, -1),('T3', 2, 2, -1, -1, -1),('T4', 3, 1, -1, -1, -1) ]
 rr = RoundRobin()
 ans = rr.processData(task,2)
