@@ -3,10 +3,16 @@ from UI.second_window import InputWindow2
 from UI.Priority_window import Priority_Output
 from UI.fcfs_window import FCFS_Output
 from UI.round_robin_window import RR_Output
-from Data.insertion import insert_values
+from Data.insertion_values import insert_values
+from Data.insert_result import insert_result
 from Logic.priority_prem import Priority
 from Logic.fcfs import Fcfs
 from Logic.round_robin import RoundRobin
+
+'''
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+'''
 
 input_window = InputWindow()
 ans = input_window.get_input_values()
@@ -16,9 +22,11 @@ Tasks, tq = input_window2.get_input_values()
 
 print(Tasks)
 
+
 if ans['algo'] == "Priority":
     priority_instance = Priority()
     res = priority_instance.processData(Tasks)
+    insert_result(res)
     Tasks = list(Tasks)
     newTask = []
     for it in Tasks:

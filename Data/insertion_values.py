@@ -15,8 +15,7 @@ def insert_values(Tasks, tq):
     myCursor = mydb.cursor()
     
     # Ensure 'Tasks' is a list of tuples where each tuple represents a row to be inserted
-    query = "INSERT INTO process (name, arrival_time, burst_time, priority, execution_time, completion_time) VALUES (%s, %s, %s, %s, %s, %s)"
-    myCursor.executemany(query, Tasks)
+    qq = "INSERT INTO result (simulationID, processIDs, averageWaitingTime, averageTurnAroundTime) VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');"
     
     tasks_name = ""
     for i in Tasks:
@@ -27,12 +26,13 @@ def insert_values(Tasks, tq):
     else: 
         algo_ID = 2
     
-    query = "INSERT INTO simulation (algorithmID, TimeQuantum, Numberof_processes, SimulationTime, processIDs) VALUES (%s, %s, %s, %s, %s)"
-    val = (algo_ID, tq, len(Tasks), -1, tasks_name)
-    myCursor.execute(query,val)
-    
-    mydb.commit()  # Commit the transaction
-    print(myCursor.rowcount, "record(s) inserted.")
+    if tasks_name != "":
+        query = "INSERT INTO simulation (algorithmID, TimeQuantum, Numberof_processes, SimulationTime, processIDs) VALUES (%s, %s, %s, %s, %s)"
+        val = (algo_ID, tq, len(Tasks), -1, tasks_name)
+        myCursor.execute(query,val)
+        
+        mydb.commit()  # Commit the transaction
+        print(myCursor.rowcount, "record(s) inserted.")
     
     myCursor.execute("select * from process")
     myCursor.execute("select * from simulation")
