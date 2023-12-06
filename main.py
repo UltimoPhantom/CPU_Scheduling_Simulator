@@ -4,7 +4,7 @@ from UI.Priority_window import Priority_Output
 from UI.fcfs_window import FCFS_Output
 from UI.round_robin_window import RR_Output
 from Data.insertion_values import insert_values
-from Data.insert_result import insert_result
+from Data.insert_result import trial
 from Logic.priority_prem import Priority
 from Logic.fcfs import Fcfs
 from Logic.round_robin import RoundRobin
@@ -37,6 +37,9 @@ elif ans['algo'] == 'FCFS':
     Fcfs_instance = Fcfs()
     res = Fcfs_instance.processData(Tasks)
     print("RES RES  ",res)
+    print("CAlled!!!!!!!")
+    trial(res[1], res[2])
+    print("CAlled!!!!!!!")
     print(Tasks, res)
     fcfs_instance_output = FCFS_Output(Tasks, res)
     fcfs_instance_output.mainloop()
