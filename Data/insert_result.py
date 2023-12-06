@@ -12,10 +12,12 @@ def insert_result(Tasks, tq):
         password='sajetsajet',
         database='process_scheduler'
     )
+    
     myCursor = mydb.cursor()
     
     # Ensure 'Tasks' is a list of tuples where each tuple represents a row to be inserted
-    query = "INSERT INTO process (name, arrival_time, burst_time, priority, execution_time, completion_time) VALUES (%s, %s, %s, %s, %s, %s)"
+    query = "INSERT INTO result (simulationID, processIDs, averageWaitingTime, averageTurnAroundTime) VALUES (%s, %s, %s, %s)"
+    val = ()
     myCursor.executemany(query, Tasks)
     
     tasks_name = ""
@@ -40,3 +42,22 @@ def insert_result(Tasks, tq):
 
     myCursor.close()
     mydb.close()
+
+
+
+
+def trial():
+    
+        mydb = mysql.connector.connect(
+        host='localhost',
+        user='root',
+        password='sajetsajet',
+        database='process_scheduler'
+        )
+    
+        myCursor = mydb.cursor()
+        myCursor.execute("select max(simulationID) from simulation")
+        max_simulation_id = myCursor.fetchone()[0]
+        print(max_simulation_id)
+        
+trial()

@@ -13,7 +13,7 @@ p1 = ctk.CTkProgressBar (
 )
 
 p1.pack()
-p1.set(0)
+p1.set(0.7)
 
 
 

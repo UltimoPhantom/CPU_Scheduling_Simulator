@@ -28,7 +28,7 @@ class RR_Output(ctk.CTk):
         self.main_frame.pack()
 
         # Background Image
-        image_path = "Assect/bg3.png"
+        image_path = "Assect/bg2.png"
         img = Image.open(image_path)
         background_image = ImageTk.PhotoImage(img)
         background_label = ctk.CTkLabel(

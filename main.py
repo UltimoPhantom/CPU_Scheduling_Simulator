@@ -9,24 +9,23 @@ from Logic.priority_prem import Priority
 from Logic.fcfs import Fcfs
 from Logic.round_robin import RoundRobin
 
-'''
-INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
-VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
-'''
 
 input_window = InputWindow()
 ans = input_window.get_input_values()
-print("$$   ",ans)
+# print("$$   ",ans)
 input_window2 = InputWindow2(ans)
 Tasks, tq = input_window2.get_input_values()
 
-print(Tasks)
-
+# print(Tasks, tq, ans['algo'])
+#Putting them to db
+insert_values(Tasks, tq, ans['algo'])
 
 if ans['algo'] == "Priority":
     priority_instance = Priority()
     res = priority_instance.processData(Tasks)
-    insert_result(res)
+    print("ORDER $$$$$$$: ", res)
+    
+    # insert_result(res)
     Tasks = list(Tasks)
     newTask = []
     for it in Tasks:
@@ -49,4 +48,3 @@ elif ans['algo'] == 'Round Robin':
     print(res)
     rr_instance_output = RR_Output(Tasks, res, tq)
     rr_instance_output.mainloop()
-    
