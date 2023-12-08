@@ -162,4 +162,5 @@ class Priority_Output(ctk.CTk):
             # Schedule the next update after 1000 milliseconds (1 second)
             self.after(1000, self.update_progress_bars, index + 1)
         else:
+            print("")
             print("Priority Scheduling DONE !!")

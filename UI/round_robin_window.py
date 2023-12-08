@@ -9,7 +9,6 @@ class RR_Output(ctk.CTk):
         self.geometry("1000x550")
         self.progress_bar_list = []
         self.Tasks = list(Tasks)
-        print("&&&& ", Sqe_Result)
         ans = []
         for task in self.Tasks:
             ans.append(list(task))
@@ -141,12 +140,14 @@ class RR_Output(ctk.CTk):
             y += 75
 
         # Start the updates after initialization
+        print("")
+        print("")
+        print("")
         self.update_progress_bars(0)
 
     def update_progress_bars(self, index):
         if index < len(self.Sqe_Result):
             self.counter += 1
-            print(self.counter)
             task = self.Sqe_Result[index]
             self.Time_Value.configure(text=self.time)
             self.time += 1
@@ -156,10 +157,14 @@ class RR_Output(ctk.CTk):
                         break
                 self.Tasks[j][4] += 1
                 completion_percentage = (self.Tasks[j][4] / self.Tasks[j][2]) 
-                print(round(completion_percentage,1)," **** ",  self.Tasks[j][0])
                 self.progress_bar_list[j].set(round(completion_percentage,3))
-
+                
+                if round(completion_percentage,3) == 1:
+                    print(self.Tasks[j][0], " done!!!")
+                    print("")
+                    notification(self.Tasks[j][0])
             # Schedule the next update after 1000 milliseconds (1 second)
             self.after(1000, self.update_progress_bars, index + 1)
         else:
-            return  
+            print("")
+            print("Round Robin DONE !!")
