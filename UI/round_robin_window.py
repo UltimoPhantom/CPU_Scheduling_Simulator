@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
 import time
+from Data.notification import notification
 
 class RR_Output(ctk.CTk):
     def __init__(self, Tasks, Sqe_Result, tq):

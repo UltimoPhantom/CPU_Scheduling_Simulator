@@ -1,3 +1,5 @@
+
+
 import mysql.connector
 
 def notification(name):
@@ -7,7 +9,7 @@ def notification(name):
         password='sajetsajet',
         database='process_scheduler'
     )
-    
+
     myCursor = mydb.cursor()
 
     # Create a temporary table to store the result of the subquery
@@ -19,9 +21,17 @@ def notification(name):
     # Drop the temporary table
     myCursor.execute("DROP TEMPORARY TABLE IF EXISTS temp_table")
 
+    # Fetch the max(simulationID) from the simulation table
+    simQuery = "SELECT MAX(simulationID) FROM simulation"
+    myCursor.execute(simQuery)
+    simID = myCursor.fetchone()[0]
+
+    # Update the latest notifications row with the simulationID
+    update_query = "UPDATE notifications, (SELECT MAX(notification_id) AS max_id FROM notifications) AS temp SET notifications.simulation_id = %s WHERE notifications.notification_id = temp.max_id"
+    myCursor.execute(update_query, (simID,))
+
     mydb.commit()
 
     myCursor.close()
     mydb.close()
 
-notification('T3')
