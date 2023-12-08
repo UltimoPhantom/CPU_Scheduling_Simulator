@@ -22,7 +22,6 @@ def trial(avgWaiting, avgTurn ):
         val = (simID, processID, avgWaiting, avgTurn)
         myCursor.execute(query,val)
         
-        print("DONE ODNE DONE DONE DONE ")
         mydb.commit()  # Commit the transaction
         myCursor.close()
         mydb.close()

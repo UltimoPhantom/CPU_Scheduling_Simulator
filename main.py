@@ -12,19 +12,14 @@ from Logic.round_robin import RoundRobin
 
 input_window = InputWindow()
 ans = input_window.get_input_values()
-# print("$$   ",ans)
 input_window2 = InputWindow2(ans)
 Tasks, tq = input_window2.get_input_values()
 
-# print(Tasks, tq, ans['algo'])
-#Putting them to db
 insert_values(Tasks, tq, ans['algo'])
 
 if ans['algo'] == "Priority":
     priority_instance = Priority()
     res = priority_instance.processData(Tasks)
-    print("ORDER $$$$$$$: ", res)
-    
     # insert_result(res)
     Tasks = list(Tasks)
     newTask = []
@@ -36,11 +31,7 @@ if ans['algo'] == "Priority":
 elif ans['algo'] == 'FCFS':
     Fcfs_instance = Fcfs()
     res = Fcfs_instance.processData(Tasks)
-    print("RES RES  ",res)
-    print("CAlled!!!!!!!")
     trial(res[1], res[2])
-    print("CAlled!!!!!!!")
-    print(Tasks, res)
     fcfs_instance_output = FCFS_Output(Tasks, res)
     fcfs_instance_output.mainloop()
     fcfs_instance_output.destroy()
@@ -48,6 +39,5 @@ elif ans['algo'] == 'FCFS':
 elif ans['algo'] == 'Round Robin':
     rr_instance = RoundRobin()
     res = rr_instance.processData(Tasks, int(tq))
-    print(res)
     rr_instance_output = RR_Output(Tasks, res, tq)
     rr_instance_output.mainloop()

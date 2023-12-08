@@ -36,13 +36,7 @@ class Fcfs:
                 indx += 1
                 firstFlag = True
                 
-        print("*** Waiting Time ***")
-        print(waiting_time)
-        print("****")
         
-        print("*** Turn Around Time ***")
-        print(turnAround_time)
-        print("****")
         
         avg_waiting_time = round(sum(waiting_time) / len(Tasks),2)
         avg_turnAround_time = round(sum(turnAround_time) / len(Tasks),2)

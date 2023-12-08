@@ -115,7 +115,6 @@ class Priority:
         '''
         Sort processes according to the Process ID
         '''
-        print("Process_ID  Arrival_Time  Rem_Burst_Time   Priority        Completed  Orig_Burst_Time Completion_Time  Turnaround_Time  Waiting_Time")
         for i in range(len(process_data)):
             for j in range(len(process_data[i])):
 
