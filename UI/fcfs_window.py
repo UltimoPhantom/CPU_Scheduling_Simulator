@@ -1,5 +1,6 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
+from Data.notification import notification
 
 class FCFS_Output(ctk.CTk):
     def __init__(self, Tasks, Sqe_Result):
@@ -155,12 +156,15 @@ class FCFS_Output(ctk.CTk):
                         break
                 self.Tasks[j][4] += 1
                 completion_percentage = (self.Tasks[j][4] / self.Tasks[j][2]) 
-                print(round(completion_percentage,1)," **** ",  self.Tasks[j][0])
                 self.progress_bar_list[j].set(round(completion_percentage,3))
+                 
+                if round(completion_percentage,3) == 1:
+                    print(self.Tasks[j][0], " done!!!")
+                    
 
             # Schedule the next update after 1000 milliseconds (1 second)
             self.after(1000, self.update_progress_bars, index + 1)
         else:
-            return
+            print("Done Done FCFS")
 
  

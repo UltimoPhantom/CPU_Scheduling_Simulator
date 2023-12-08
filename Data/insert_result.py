@@ -8,7 +8,7 @@ def trial(avgWaiting, avgTurn ):
         password='sajetsajet',
         database='process_scheduler'
         )
-    
+
         myCursor = mydb.cursor()
         myCursor.execute("select max(simulationID) from simulation")
         simID = myCursor.fetchone()[0]
@@ -28,4 +28,3 @@ def trial(avgWaiting, avgTurn ):
         mydb.close()
 
 
-        
