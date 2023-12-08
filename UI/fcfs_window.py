@@ -160,6 +160,7 @@ class FCFS_Output(ctk.CTk):
                  
                 if round(completion_percentage,3) == 1:
                     print(self.Tasks[j][0], " done!!!")
+                    notification(self.Tasks[j][0], len(self.Tasks))
                     
 
             # Schedule the next update after 1000 milliseconds (1 second)
