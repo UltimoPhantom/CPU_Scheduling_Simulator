@@ -1,7 +1,7 @@
 import mysql.connector
 
 def trial(avgWaiting, avgTurn ):
-    
+
         mydb = mysql.connector.connect(
         host='localhost',
         user='root',

@@ -1,5 +1,3 @@
-
-
 import mysql.connector
 
 def notification(name):
