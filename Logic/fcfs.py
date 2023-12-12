@@ -1,6 +1,5 @@
 class Fcfs:
     def processData(self, Tasks):
-        # Tasks: list of tuples representing tasks
         ans = []
         for task in Tasks:
             ans.append(list(task))
@@ -8,7 +7,6 @@ class Fcfs:
         # Sort tasks according to their arrival time
         Tasks = sorted(Tasks, key=lambda x: x[1])
 
-        # Initialize variables
         sequence = []
         waiting_time = []
         turnAround_time = []
